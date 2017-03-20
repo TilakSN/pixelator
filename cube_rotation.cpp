@@ -20,7 +20,7 @@ void init() {
 }
 
 void rotate() {
-	glRotatef(angle++, normals[dir][0], normals[dir][1], normals[dir][2]);
+	glRotatef(angle, normals[dir][0], normals[dir][1], normals[dir][2]);
 }
 
 void draw_quad(GLint index) {
@@ -38,7 +38,7 @@ void display() {
 	for (int i = -1; ++i < 6; draw_quad(i));
 	glPopMatrix();
 	glutSwapBuffers();
-	glutPostRedisplay();
+	// glutPostRedisplay();
 }
 
 void getAngle() {
@@ -49,9 +49,9 @@ void getAngle() {
 void mouse(int button, int status, int x, int y) {
 	if (status == GLUT_UP && button <= GLUT_RIGHT_BUTTON) {
 		dir = button;
-		// getAngle();
+		getAngle();
 	}
-	// glutPostRedisplay();
+	glutPostRedisplay();
 }
 
 int main(int argc, char **argv) {
